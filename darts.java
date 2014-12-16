@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Logan Labanna 12/15/2014
  *
  */
-public class darts {
+public class Darts {
 	
 	public static double getX(){
 		double x = Math.random();
@@ -33,7 +33,7 @@ public class darts {
 		Scanner in = new Scanner (System.in);
 		double h , n , x, y, piAvg = 0, piTotal = 0;
 		int dartsThrown = 0, trials = 0, counter = 0;
-		double pi [] = new double [trials];
+		double pi[] = new double[trials]; // this is your problem. you are declaring that pi is 0 long, since you just declared trials = 0
 		
 		System.out.printf("How many trials?: \n");
 		trials = getTrials(in);
@@ -42,20 +42,22 @@ public class darts {
 		
 		in.close();
 		
+		System.out.println(pi.length);
 		for(int i = 0; i < pi.length; i++){
+			System.out.println("executing");
 			h = 0;
 			n = 0;
 			while(counter < dartsThrown){
 				x = getX();
 				y = getY();
-				n++;
-				if((Math.pow(x, 2) + (Math.pow(y, 2)) <= 1.0)){
+				n++; // just so you know, n = counter in this situation
+				if((Math.pow(x, 2) + (Math.pow(y, 2)) <= 1)){
 					h++;
 				}
-				counter++;
+				counter++; // this is the same thing as n
 			}
-			pi [i] = 4 * (h/n);
-			piTotal += pi [i];
+			pi[i] = 4 * (h/n);
+			piTotal += pi[i];
 			System.out.printf("Trial [%d]: pi = %.6f\n", i, pi[i]);
 			counter = 0;
 			}
